@@ -146,6 +146,38 @@
         color: var(--bad);
       }
 
+      .paid-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 6px 0 10px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .paid-cta strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .paid-cta a {
+        border-radius: 6px;
+        padding: 10px 14px;
+        background: var(--accent);
+        color: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .paid-cta a:hover {
+        background: var(--accent-dark);
+      }
+
       @media (max-width: 760px) {
         main {
           width: min(100% - 20px, 1120px);
@@ -168,6 +200,14 @@
         <h1>CSV Dedupe, Normalize, and Schema Cleanup API</h1>
         <p>Paste messy CSV text, choose optional normalized key columns, and receive a cleaned CSV plus a JSON cleanup report.</p>
       </header>
+
+      <aside class="paid-cta" aria-label="Paid automation pack">
+        <div>
+          <strong>Need batch cleanup scripts and reusable workflow files?</strong>
+          <p>Get the Utility Cleanup Automation Pack for CSV, Markdown, subtitles, and repeatable cleanup jobs.</p>
+        </div>
+        <a href="https://laukua.gumroad.com/l/utility-cleanup-automation-pack" target="_blank" rel="noopener">Get the pack</a>
+      </aside>
 
       <div class="workspace">
         <section>
