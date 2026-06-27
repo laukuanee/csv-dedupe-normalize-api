@@ -53,6 +53,10 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/clean-csv -ContentType
 
 ## Web Demo
 
+Live demo:
+
+https://csv-dedupe-normalize-api.vercel.app
+
 The static demo in `index.html` calls the Vercel-style endpoint at `/api/clean_csv`.
 
 Serverless endpoint:
@@ -82,5 +86,5 @@ C:\Users\lauku\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\p
 ## Publish Targets
 
 - GitHub: public open-source repository.
-- Vercel: claimable preview or account-linked free-tier deployment.
+- Vercel: deployed at https://csv-dedupe-normalize-api.vercel.app.
 - RapidAPI: marketplace listing after endpoint host, pricing, and account path are confirmed without hard-stop prompts.

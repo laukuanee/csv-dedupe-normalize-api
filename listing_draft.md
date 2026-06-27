@@ -4,6 +4,10 @@
 
 CSV Dedupe, Normalize, and Schema Cleanup API
 
+## Live Demo
+
+https://csv-dedupe-normalize-api.vercel.app
+
 ## Short Description
 
 Clean messy CSV exports by normalizing headers, trimming cells, repairing row shape, removing duplicates, and returning a cleaned CSV plus JSON cleanup report.

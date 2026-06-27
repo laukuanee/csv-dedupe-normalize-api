@@ -15,8 +15,9 @@ Standing publishing permission was granted on 2026-06-27. Publishing is allowed 
 - [x] Create marketplace description, examples, and pricing draft.
 - [x] Add screenshots or terminal capture for marketplace listing.
 - [x] Package for selected host or marketplace.
+- [x] Deploy hosted demo.
 - [ ] Create public GitHub repository or push to accessible existing repository.
-- [ ] Deploy hosted demo.
+- [ ] Publish RapidAPI listing.
 
 ## Approval Needed
 
@@ -28,6 +29,13 @@ Standing publishing permission was granted on 2026-06-27. Publishing is allowed 
 - [ ] Confirm payout setup only if required and explicitly approved.
 
 These items can be handled autonomously under the standing permission when the platform is already accessible and does not require spending, sensitive account changes, legal/tax/payment/payout details, OTP/MFA, CAPTCHA, or contracts. Any hard-stop item still requires exact action-time approval.
+
+## Current Publishing State
+
+- Live Vercel demo: https://csv-dedupe-normalize-api.vercel.app
+- Vercel project: `lau-kuan-ee-s-projects/csv-dedupe-normalize-api`
+- Local git commit: `1d03fd5` plus latest metadata update after deployment.
+- GitHub blocker: GitHub connector can identify the authenticated user as `laukuanee`, but this session does not expose a create-repository tool. `gh` was not installed; a silent `winget` install attempt reached the MSI phase and stalled, so no public GitHub repo was created in this heartbeat.
 
 ## Hard Stops
 
