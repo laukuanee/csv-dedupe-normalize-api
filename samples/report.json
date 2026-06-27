@@ -1,0 +1,19 @@
+{
+  "input_file": "utility-products\\csv-dedupe-normalize-api\\samples\\messy.csv",
+  "output_file": "utility-products\\csv-dedupe-normalize-api\\samples\\cleaned.csv",
+  "input_rows": 5,
+  "output_rows": 3,
+  "input_columns": 4,
+  "output_columns": 5,
+  "columns": [
+    "full_name",
+    "email_address",
+    "email_address_2",
+    "signup_date",
+    "extra_1"
+  ],
+  "duplicate_rows_removed": 1,
+  "empty_rows_removed": 1,
+  "short_rows_padded": 0,
+  "wide_rows_extended": 1
+}

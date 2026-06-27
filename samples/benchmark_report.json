@@ -1,0 +1,20 @@
+{
+  "input_file": "samples\\benchmark_common_messy_patterns.csv",
+  "output_file": "samples\\benchmark_cleaned.csv",
+  "input_rows": 6,
+  "output_rows": 4,
+  "input_columns": 5,
+  "output_columns": 6,
+  "columns": [
+    "full_name",
+    "email_address",
+    "email_address_2",
+    "signup_date",
+    "plan",
+    "extra_1"
+  ],
+  "duplicate_rows_removed": 1,
+  "empty_rows_removed": 1,
+  "short_rows_padded": 2,
+  "wide_rows_extended": 1
+}

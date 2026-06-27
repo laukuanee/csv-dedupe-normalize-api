@@ -1,0 +1,4 @@
+full_name,email_address,email_address_2,signup_date,extra_1
+Alice Example,alice@example.com,alice@example.com,2026-06-01,
+Bob Example,bob@example.com,bob@example.com,2026-06-02,
+Charlie Example,charlie@example.com,charlie@example.com,2026-06-03,overflow note

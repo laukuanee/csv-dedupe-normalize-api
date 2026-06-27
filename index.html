@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSV Dedupe, Normalize, and Schema Cleanup API</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172026;
+        --muted: #5a6670;
+        --line: #ccd5dc;
+        --panel: #f7f9fb;
+        --accent: #1d7a8c;
+        --accent-dark: #125766;
+        --ok: #1f7a4d;
+        --bad: #a83d3d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--ink);
+        background: #ffffff;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0;
+      }
+
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.75rem, 4vw, 3rem);
+        line-height: 1.05;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      section {
+        min-width: 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      textarea,
+      input,
+      pre {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font: 14px/1.45 Consolas, "Liberation Mono", monospace;
+      }
+
+      textarea {
+        min-height: 340px;
+        padding: 12px;
+        resize: vertical;
+      }
+
+      input {
+        padding: 10px 12px;
+        margin-bottom: 12px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0 0;
+      }
+
+      button {
+        border: 0;
+        border-radius: 6px;
+        padding: 10px 14px;
+        background: var(--accent);
+        color: #ffffff;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button.secondary {
+        background: #e7eef2;
+        color: var(--ink);
+      }
+
+      button:hover {
+        background: var(--accent-dark);
+      }
+
+      button.secondary:hover {
+        background: #d7e2e8;
+      }
+
+      .output {
+        display: grid;
+        gap: 12px;
+      }
+
+      pre {
+        min-height: 160px;
+        margin: 0;
+        padding: 12px;
+        overflow: auto;
+        background: var(--panel);
+        white-space: pre-wrap;
+      }
+
+      .status {
+        min-height: 24px;
+        margin-top: 12px;
+        font-weight: 700;
+      }
+
+      .status.ok {
+        color: var(--ok);
+      }
+
+      .status.bad {
+        color: var(--bad);
+      }
+
+      @media (max-width: 760px) {
+        main {
+          width: min(100% - 20px, 1120px);
+          padding: 20px 0;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        textarea {
+          min-height: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>CSV Dedupe, Normalize, and Schema Cleanup API</h1>
+        <p>Paste messy CSV text, choose optional normalized key columns, and receive a cleaned CSV plus a JSON cleanup report.</p>
+      </header>
+
+      <div class="workspace">
+        <section>
+          <label for="csvText">CSV input</label>
+          <textarea id="csvText">Full Name,Email Address,Email Address,Signup Date, Plan
+ Alice Example , alice@example.com , alice@example.com, 2026-06-01, Pro
+Alice Example,alice@example.com,alice@example.com,2026-06-01,Pro
+Bob Example,bob@example.com,,2026-06-02
+,,,,
+Charlie Example,charlie@example.com,charlie@example.com,2026-06-03,Team,overflow-note</textarea>
+
+          <label for="keyColumns">Deduplicate by normalized columns</label>
+          <input id="keyColumns" value="full_name,email_address" aria-label="Deduplicate by normalized columns">
+
+          <div class="actions">
+            <button id="cleanButton" type="button">Clean CSV</button>
+            <button id="sampleButton" class="secondary" type="button">Reset Sample</button>
+            <button id="downloadButton" class="secondary" type="button">Download CSV</button>
+          </div>
+          <div id="status" class="status" role="status"></div>
+        </section>
+
+        <section class="output">
+          <div>
+            <label for="cleanedCsv">Cleaned CSV</label>
+            <pre id="cleanedCsv"></pre>
+          </div>
+          <div>
+            <label for="reportJson">Cleanup report</label>
+            <pre id="reportJson"></pre>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const sampleCsv = document.getElementById("csvText").value;
+      const csvText = document.getElementById("csvText");
+      const keyColumns = document.getElementById("keyColumns");
+      const cleanedCsv = document.getElementById("cleanedCsv");
+      const reportJson = document.getElementById("reportJson");
+      const status = document.getElementById("status");
+
+      function setStatus(message, kind) {
+        status.textContent = message;
+        status.className = `status ${kind || ""}`.trim();
+      }
+
+      async function cleanCsv() {
+        setStatus("Cleaning CSV...", "");
+        const keys = keyColumns.value.split(",").map((item) => item.trim()).filter(Boolean);
+        const response = await fetch("/api/clean_csv", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            csv_text: csvText.value,
+            key_columns: keys.length ? keys : undefined
+          })
+        });
+        const payload = await response.json();
+        if (!response.ok) {
+          cleanedCsv.textContent = "";
+          reportJson.textContent = JSON.stringify(payload, null, 2);
+          setStatus(payload.error?.message || "CSV cleanup failed.", "bad");
+          return;
+        }
+        cleanedCsv.textContent = payload.cleaned_csv;
+        reportJson.textContent = JSON.stringify(payload.report, null, 2);
+        setStatus(`Cleaned ${payload.report.input_rows} rows into ${payload.report.output_rows} rows.`, "ok");
+      }
+
+      function downloadCsv() {
+        const blob = new Blob([cleanedCsv.textContent || ""], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "cleaned.csv";
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+
+      document.getElementById("cleanButton").addEventListener("click", () => {
+        cleanCsv().catch((error) => {
+          setStatus(error.message || "CSV cleanup failed.", "bad");
+        });
+      });
+      document.getElementById("sampleButton").addEventListener("click", () => {
+        csvText.value = sampleCsv;
+        keyColumns.value = "full_name,email_address";
+        cleanedCsv.textContent = "";
+        reportJson.textContent = "";
+        setStatus("", "");
+      });
+      document.getElementById("downloadButton").addEventListener("click", downloadCsv);
+    </script>
+  </body>
+</html>

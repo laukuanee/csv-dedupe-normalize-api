@@ -1,0 +1,7 @@
+Full Name,Email Address,Email Address,Signup Date, Plan
+ Alice Example , alice@example.com , alice@example.com, 2026-06-01, Pro
+Alice Example,alice@example.com,alice@example.com,2026-06-01,Pro
+Bob Example,bob@example.com,,2026-06-02
+,,,,
+Charlie Example,charlie@example.com,charlie@example.com,2026-06-03,Team,overflow-note
+ Dana Example , dana@example.com , dana@example.com , 2026-06-04 , Starter
