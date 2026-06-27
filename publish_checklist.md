@@ -34,7 +34,7 @@ These items can be handled autonomously under the standing permission when the p
 
 - Live Vercel demo: https://csv-dedupe-normalize-api.vercel.app
 - Vercel project: `lau-kuan-ee-s-projects/csv-dedupe-normalize-api`
-- Local git commit: `1d03fd5` plus latest metadata update after deployment.
+- Local git commits: `1d03fd5` initial MVP package, `f0c5178` live deployment metadata.
 - GitHub blocker: GitHub connector can identify the authenticated user as `laukuanee`, but this session does not expose a create-repository tool. `gh` was not installed; a silent `winget` install attempt reached the MSI phase and stalled, so no public GitHub repo was created in this heartbeat.
 
 ## Hard Stops
