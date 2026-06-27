@@ -37,7 +37,7 @@ These items can be handled autonomously under the standing permission when the p
 - Vercel project: `lau-kuan-ee-s-projects/csv-dedupe-normalize-api`
 - Public GitHub repo: https://github.com/laukuanee/csv-dedupe-normalize-api
 - RapidAPI import package: `rapidapi/openapi.yaml` with sample request in `rapidapi/request-sample.json`.
-- RapidAPI blocker: payout is linked and product is ready, but Codex Chrome Extension control times out on the RapidAPI editor path.
+- RapidAPI blocker: payout is linked and product is ready, but Codex Chrome Extension control times out on the RapidAPI editor path. Latest supported retry: lightweight tab listing initially returned 3 tabs, claiming the RapidAPI tab timed out, setup checks all passed, fresh Chrome window opened, then the fresh-window tab listing timed out.
 
 ## Hard Stops
 
