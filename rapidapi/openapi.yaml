@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: CSV Dedupe Normalize API
+  version: "1.0.0"
+  description: Clean messy CSV text by normalizing headers, trimming cells, dropping empty rows, padding short rows, preserving overflow cells, and removing duplicate rows.
+  license:
+    name: MIT
+    url: https://github.com/laukuanee/csv-dedupe-normalize-api/blob/main/LICENSE
+servers:
+  - url: https://csv-dedupe-normalize-api.vercel.app
+security:
+  - RapidApiKey: []
+paths:
+  /api/clean_csv:
+    get:
+      summary: Health check
+      operationId: healthCheck
+      responses:
+        "200":
+          description: Endpoint metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  endpoint:
+                    type: string
+                  method:
+                    type: string
+        "404":
+          description: Endpoint not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Clean and dedupe CSV text
+      operationId: cleanCsv
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - csv_text
+              properties:
+                csv_text:
+                  type: string
+                  description: Raw CSV text to clean.
+                key_columns:
+                  type: array
+                  description: Optional normalized column names used for deduplication.
+                  items:
+                    type: string
+            example:
+              csv_text: "Full Name,Email\n Alice , alice@example.com\nAlice,alice@example.com\n"
+              key_columns:
+                - full_name
+                - email
+      responses:
+        "200":
+          description: Cleaned CSV and cleanup report.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CleanCsvResponse"
+        "400":
+          description: Invalid request or CSV input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "413":
+          description: Payload too large.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  securitySchemes:
+    RapidApiKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+  schemas:
+    CleanCsvResponse:
+      type: object
+      required:
+        - cleaned_csv
+        - report
+      properties:
+        cleaned_csv:
+          type: string
+        report:
+          type: object
+          required:
+            - input_rows
+            - output_rows
+            - duplicate_rows_removed
+            - columns
+          properties:
+            input_rows:
+              type: integer
+            output_rows:
+              type: integer
+            input_columns:
+              type: array
+              items:
+                type: string
+            output_columns:
+              type: array
+              items:
+                type: string
+            columns:
+              type: array
+              items:
+                type: string
+            duplicate_rows_removed:
+              type: integer
+            empty_rows_removed:
+              type: integer
+            short_rows_padded:
+              type: integer
+            wide_rows_extended:
+              type: integer
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              enum:
+                - missing_csv_text
+                - invalid_json
+                - invalid_encoding
+                - invalid_key_columns
+                - invalid_csv
+                - unsupported_content_type
+                - payload_too_large
+            message:
+              type: string

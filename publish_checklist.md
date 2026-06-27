@@ -15,8 +15,9 @@ Standing publishing permission was granted on 2026-06-27. Publishing is allowed 
 - [x] Create marketplace description, examples, and pricing draft.
 - [x] Add screenshots or terminal capture for marketplace listing.
 - [x] Package for selected host or marketplace.
+- [x] Create RapidAPI OpenAPI import package.
 - [x] Deploy hosted demo.
-- [ ] Create public GitHub repository or push to accessible existing repository.
+- [x] Create public GitHub repository or push to accessible existing repository.
 - [ ] Publish RapidAPI listing.
 
 ## Approval Needed
@@ -34,8 +35,9 @@ These items can be handled autonomously under the standing permission when the p
 
 - Live Vercel demo: https://csv-dedupe-normalize-api.vercel.app
 - Vercel project: `lau-kuan-ee-s-projects/csv-dedupe-normalize-api`
-- Local git commits: `1d03fd5` initial MVP package, `f0c5178` live deployment metadata.
-- GitHub blocker: GitHub connector can identify the authenticated user as `laukuanee`, but this session does not expose a create-repository tool. `gh` was not installed; a silent `winget` install attempt reached the MSI phase and stalled, so no public GitHub repo was created in this heartbeat.
+- Public GitHub repo: https://github.com/laukuanee/csv-dedupe-normalize-api
+- RapidAPI import package: `rapidapi/openapi.yaml` with sample request in `rapidapi/request-sample.json`.
+- RapidAPI blocker: payout is linked and product is ready, but Codex Chrome Extension control times out on the RapidAPI editor path.
 
 ## Hard Stops
 

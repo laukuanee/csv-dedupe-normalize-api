@@ -1,0 +1,4 @@
+{
+  "csv_text": "Full Name,Email\n Alice , alice@example.com\nAlice,alice@example.com\n",
+  "key_columns": ["full_name", "email"]
+}
