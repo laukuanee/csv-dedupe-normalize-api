@@ -36,5 +36,6 @@ Use hard limits and no overage fee at launch. This follows the standing sell-fas
 - 2026-06-27: No `RAPIDAPI*` token is configured in the local environment.
 - 2026-06-27: RapidAPI's official docs are reachable at `https://docs.rapidapi.com/docs/platform-api-overview`, `https://docs.rapidapi.com/docs/creating-updating-apis`, and `https://docs.rapidapi.com/docs/enterprise-overview`; they route API management through the REST Platform API / Enterprise Hub documentation path.
 - 2026-06-27: Codex Chrome Extension setup checks pass, but control times out when claiming/listing tabs after the fresh-window retry, so the RapidAPI Studio editor remains unreachable from Codex automation.
+- 2026-06-28: Chrome reached the private RapidAPI draft Analytics and Definition screens. `Plans & Pricing` is present but disabled until base URL/endpoints/public setup are complete. API Specs/OpenAPI upload was reached, but the hidden file input timed out and Chrome control reset while reclaiming the tab before the prepared `openapi.yaml` upload completed.
 
 Do not enter or change payout, tax, legal identity, bank, card, OTP, MFA, CAPTCHA, account-security, or contract/terms fields without exact action-time approval.
