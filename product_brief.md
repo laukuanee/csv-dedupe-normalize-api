@@ -35,6 +35,6 @@ Before public publishing:
 
 - choose account/identity to publish under;
 - approve marketplace terms;
-- approve pricing;
+- apply the standing sell-fast pricing policy;
 - approve description/screenshots;
 - set or confirm payout details only if the user explicitly chooses to do that step.

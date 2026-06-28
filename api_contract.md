@@ -62,9 +62,10 @@ Example JSON request:
 
 ## Pricing Draft
 
-- Free: 50 requests/month, 256 KB max CSV payload, hard monthly limit.
-- Starter: USD 3/month, 2,000 requests/month, 1 MB max CSV payload, hard monthly limit.
-- Bulk: USD 9/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+- Basic: Free, 100 requests/month, 256 KB max CSV payload, hard monthly limit.
+- Pro: USD 4.99/month, 2,500 requests/month, 1 MB max CSV payload, hard monthly limit.
+- Ultra: USD 9.99/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+- Mega: USD 19.99/month, 50,000 requests/month, 5 MB max CSV payload, hard monthly limit.
 - Paid bulk tier: batch processing and higher limits.
 
-Exact public pricing requires user approval before publishing.
+Public pricing uses the standing sell-fast pricing policy unless live marketplace constraints require the closest supported equivalent.

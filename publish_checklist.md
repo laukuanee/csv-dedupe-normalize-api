@@ -26,7 +26,7 @@ Standing publishing permission was granted on 2026-06-27. Publishing is allowed 
 - [ ] Approve public product name and listing copy.
 - [ ] Approve account/profile used to publish.
 - [ ] Accept marketplace terms if needed.
-- [ ] Confirm pricing.
+- [x] Apply standing sell-fast pricing policy.
 - [ ] Confirm payout setup only if required and explicitly approved.
 
 These items can be handled autonomously under the standing permission when the platform is already accessible and does not require spending, sensitive account changes, legal/tax/payment/payout details, OTP/MFA, CAPTCHA, or contracts. Any hard-stop item still requires exact action-time approval.

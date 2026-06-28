@@ -35,9 +35,10 @@ This API is for teams and automations that receive messy CSV files from forms, C
 
 ## Pricing Draft
 
-- Free: 50 requests/month, 256 KB max CSV payload, hard monthly limit.
-- Starter: USD 3/month, 2,000 requests/month, 1 MB max CSV payload, hard monthly limit.
-- Bulk: USD 9/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+- Basic: Free, 100 requests/month, 256 KB max CSV payload, hard monthly limit.
+- Pro: USD 4.99/month, 2,500 requests/month, 1 MB max CSV payload, hard monthly limit.
+- Ultra: USD 9.99/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+- Mega: USD 19.99/month, 50,000 requests/month, 5 MB max CSV payload, hard monthly limit.
 
 Launch with no overage fee. Raise pricing only after usage proves recurring demand.
 

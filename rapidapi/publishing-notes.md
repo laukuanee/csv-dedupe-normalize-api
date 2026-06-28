@@ -21,11 +21,12 @@ Expected response: `report.duplicate_rows_removed` is `1`.
 
 ## Pricing Draft
 
-- Free: 50 requests/month, 256 KB max CSV payload, hard monthly limit.
-- Starter: USD 3/month, 2,000 requests/month, 1 MB max CSV payload, hard monthly limit.
-- Bulk: USD 9/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+- Basic: Free, 100 requests/month, 256 KB max CSV payload, hard monthly limit.
+- Pro: USD 4.99/month, 2,500 requests/month, 1 MB max CSV payload, hard monthly limit.
+- Ultra: USD 9.99/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+- Mega: USD 19.99/month, 50,000 requests/month, 5 MB max CSV payload, hard monthly limit.
 
-Use hard limits and no overage fee at launch. This keeps buyer risk low and undercuts generic API pricing while demand is unproven.
+Use hard limits and no overage fee at launch. This follows the standing sell-fast policy and undercuts generic API pricing while demand is unproven.
 
 ## Latest Publishing Evidence
 
