@@ -35,8 +35,10 @@ This API is for teams and automations that receive messy CSV files from forms, C
 
 ## Pricing Draft
 
-- Free tier: small CSV payloads for evaluation and light automation.
-- Starter tier: larger payloads and higher monthly request limits.
-- Bulk tier: higher payload caps, batch use, and higher monthly row volume.
+- Free: 50 requests/month, 256 KB max CSV payload, hard monthly limit.
+- Starter: USD 3/month, 2,000 requests/month, 1 MB max CSV payload, hard monthly limit.
+- Bulk: USD 9/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
 
-Public pricing, support language, screenshots, and marketplace claims need approval before publishing.
+Launch with no overage fee. Raise pricing only after usage proves recurring demand.
+
+Launch pricing is approved for fast-sale testing. Marketplace publication still requires reliable editor/API access, and any payment, tax, legal, security, OTP/MFA, CAPTCHA, or contract prompt remains a hard stop.

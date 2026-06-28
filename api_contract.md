@@ -62,8 +62,9 @@ Example JSON request:
 
 ## Pricing Draft
 
-- Free: small files, limited monthly requests.
-- Paid low tier: larger files and more monthly rows.
+- Free: 50 requests/month, 256 KB max CSV payload, hard monthly limit.
+- Starter: USD 3/month, 2,000 requests/month, 1 MB max CSV payload, hard monthly limit.
+- Bulk: USD 9/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
 - Paid bulk tier: batch processing and higher limits.
 
 Exact public pricing requires user approval before publishing.

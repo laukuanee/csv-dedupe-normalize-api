@@ -21,9 +21,11 @@ Expected response: `report.duplicate_rows_removed` is `1`.
 
 ## Pricing Draft
 
-- Free: limited trial requests.
-- Starter: low monthly request limit for solo operators.
-- Bulk: higher request limits for recurring CSV cleanup.
+- Free: 50 requests/month, 256 KB max CSV payload, hard monthly limit.
+- Starter: USD 3/month, 2,000 requests/month, 1 MB max CSV payload, hard monthly limit.
+- Bulk: USD 9/month, 10,000 requests/month, 3 MB max CSV payload, hard monthly limit.
+
+Use hard limits and no overage fee at launch. This keeps buyer risk low and undercuts generic API pricing while demand is unproven.
 
 ## Latest Publishing Evidence
 
